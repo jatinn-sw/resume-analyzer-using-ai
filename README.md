@@ -1,87 +1,72 @@
-# Welcome to React Router!
+# Lumen — AI Resume Analyzer
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Analyze a resume against a job description and get structured, ATS-oriented feedback.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Built with **React Router (v7)** + **Vite** + **TypeScript** + **Tailwind**. It uses **Puter** (Puter.js) for:
 
-## Features
+- **Auth**: sign in
+- **FS**: store uploaded resume PDF + generated preview image
+- **KV**: persist analyses + feedback
+- **AI**: generate structured feedback (JSON)
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Tech stack
 
-## Getting Started
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=0B1120)
+![React Router](https://img.shields.io/badge/React%20Router-v7-CA4245?logo=reactrouter&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-state%20store-000000?logo=zustand&logoColor=white)
+![PDF.js](https://img.shields.io/badge/PDF.js-pdfjs--dist-FF7139?logo=adobeacrobatreader&logoColor=white)
+![Puter](https://img.shields.io/badge/Puter.js-platform-111827)
 
-### Installation
+## Getting started
 
-Install the dependencies:
+### Prerequisites
+
+- Node.js (recent LTS recommended)
+- A Puter account (the app will prompt you to sign in)
+
+### Install
 
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
+### Run locally
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+## How it works
 
-## Building for Production
+1. Sign in via Puter.
+2. Upload resume PDF + provide job title/description if available.
+3. Store the PDF in Puter FS.
+4. Convert to a PNG and store it in Puter FS.
+5. Send the prompt  to Puter AI.
+6. Save the result to Puter KV under a unique key and render it on the review route.
 
-Create a production build:
+
+## Scripts
+
+- `npm run dev`: start dev server (HMR)
+- `npm run build`: build for production
+- `npm run start`: serve the production build
+- `npm run typecheck`: React Router typegen + TypeScript check
+
+## Docker
+
+Build and run:
 
 ```bash
-npm run build
+docker build -t lumen .
+docker run --rm -p 3000:3000 lumen
 ```
 
-## Deployment
+Then open `http://localhost:3000`.
 
-### Docker Deployment
+## Troubleshooting
 
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- **PDF preview doesn’t work**: confirm `public/pdf.worker.min.mjs` exists and is accessible at `/pdf.worker.min.mjs`.
