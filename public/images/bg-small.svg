@@ -33,8 +33,8 @@
 <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_9323_560"/>
 </filter>
 <linearGradient id="paint0_linear_9323_560" x1="462.5" y1="0" x2="462.5" y2="1209" gradientUnits="userSpaceOnUse">
-<stop stop-color="#EAF2FF"/>
-<stop offset="1" stop-color="#FFF3F6"/>
+<stop stop-color="#C8DAFF"/>
+<stop offset="1" stop-color="#FFC4D3"/>
 </linearGradient>
 <linearGradient id="paint1_linear_9323_560" x1="894.882" y1="297" x2="894.882" y2="824.655" gradientUnits="userSpaceOnUse">
 <stop stop-color="white" stop-opacity="0"/>
