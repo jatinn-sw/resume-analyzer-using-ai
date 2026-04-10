@@ -18,9 +18,17 @@ const auth = () => {
     }, [auth.isAuthenticated, next])
 
     return (
-        <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center">
-            <div className="gradient-border shadow-lg">
-                <section className="flex flex-col gap-8 bg-white rounded-2xl p-10">
+        <main className="bg-[url('/images/bg-dark.svg')] bg-cover min-h-screen flex items-center justify-center relative overflow-hidden">
+            {/* Animated aurora glow behind the card */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: 'radial-gradient(ellipse at 50% 50%, rgba(0, 212, 170, 0.08) 0%, transparent 60%)',
+                }}
+            />
+
+            <div className="gradient-border shadow-lg relative z-10" style={{ boxShadow: '0 12px 40px rgba(0, 212, 170, 0.08)' }}>
+                <section className="flex flex-col gap-8 rounded-2xl p-10" style={{ background: 'rgba(255, 255, 255, 0.04)', backdropFilter: 'blur(16px)' }}>
                     <div className="flex flex-col items-center gap-2 text-center">
                         <h1>Welcome</h1>
                         <h2>Log In to Continue</h2>

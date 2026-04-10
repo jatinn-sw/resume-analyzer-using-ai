@@ -2,18 +2,18 @@ import ScoreGauge from "~/components/ScoreGauge";
 import ScoreBadge from "~/components/ScoreBadge";
 
 const Category = ({title, score}: {title: string, score: number}) => {
-    const textColor = score > 70 ? 'text-green-600'
+    const textColor = score > 70 ? 'text-badge-green-text'
             : score > 49
-        ? 'text-yellow-600' : 'text-red-600';
+        ? 'text-badge-yellow-text' : 'text-badge-red-text';
 
     return (
         <div className="resume-summary">
             <div className="category">
                 <div className="flex flex-row gap-2 items-center justify-center">
-                    <p className="text-2xl">{title}</p>
+                    <p className="text-2xl" style={{ color: '#F0F4F8' }}>{title}</p>
                     <ScoreBadge score={score} />
                 </div>
-                <p className="text-2xl">
+                <p className="text-2xl" style={{ color: '#94A3B8' }}>
                     <span className={textColor}>{score}</span>/100
                 </p>
             </div>
@@ -23,13 +23,13 @@ const Category = ({title, score}: {title: string, score: number}) => {
 
 const Summary = ({ feedback }: { feedback: Feedback }) => {
     return (
-        <div className="bg-white rounded-2xl shadow-md w-full">
+        <div className="glass-card w-full shadow-lg">
             <div className="flex flex-row items-center p-4 gap-8">
                 <ScoreGauge score={feedback.overallScore} />
 
                 <div className="flex flex-col gap-2">
-                    <h2 className="text-2xl font-bold">Your Resume Score</h2>
-                    <p className="text-sm text-gray-500">
+                    <h2 className="text-2xl font-bold" style={{ color: '#F0F4F8' }}>Your Resume Score</h2>
+                    <p className="text-sm" style={{ color: '#94A3B8' }}>
                         This score reflects performance based on the criteria listed below.
                     </p>
                 </div>

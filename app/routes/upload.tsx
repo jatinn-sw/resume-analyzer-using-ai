@@ -84,47 +84,57 @@ const Upload = () => {
     }
 
     return (
-        <main className={"bg-[url('/images/bg-main.svg')] bg-cover"}>
-            <Navbar />
+        <main className="bg-[url('/images/bg-dark.svg')] bg-cover relative overflow-hidden">
+            {/* Aurora glow layer */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: 'radial-gradient(ellipse at 40% 30%, rgba(0, 180, 216, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 60% 70%, rgba(255, 107, 107, 0.04) 0%, transparent 50%)',
+                }}
+            />
 
-            <section className="main-section">
-                <div className="page-heading py-16" >
-                    <h1>Optimize Your Resume with Intelligent Career Feedback</h1>
-                    {isProcessing ? (
-                        <>
-                            <h2>{statusText}</h2>
-                            <img src="/images/resume-scan.gif" className="w-full"/>
-                        </>
-                    ) : (
-                        <h2>Drop your resume and get ATS insights and improvement recommendations</h2>
-                    )}
-                    {!isProcessing && (
-                        <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8">
-                            <div className="form-div">
-                                <label htmlFor="company-name">Company Name</label>
-                                <input type="text" name="company-name" placeholder="Company Name" id="company-name" />
-                            </div>
-                            <div className="form-div">
-                                <label htmlFor="job-title">Job Title</label>
-                                <input type="text" name="job-title" placeholder="Job Title" id="job-title" />
-                            </div>
-                            <div className="form-div">
-                                <label htmlFor="job-description">Job Description</label>
-                                <textarea rows={5} name="job-description" placeholder="Job Description" id="job-description" />
-                            </div>
+            <div className="relative z-10">
+                <Navbar />
 
-                            <div className="form-div">
-                                <label htmlFor="uploader">Upload Resume</label>
-                                <FileUploader onFileSelect={handleFileSelect} />
-                            </div>
+                <section className="main-section">
+                    <div className="page-heading py-16" >
+                        <h1>Optimize Your Resume with Intelligent Career Feedback</h1>
+                        {isProcessing ? (
+                            <>
+                                <h2>{statusText}</h2>
+                                <img src="/images/resume-scan.gif" className="w-full rounded-2xl"/>
+                            </>
+                        ) : (
+                            <h2>Drop your resume and get ATS insights and improvement recommendations</h2>
+                        )}
+                        {!isProcessing && (
+                            <form id="upload-form" onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8">
+                                <div className="form-div">
+                                    <label htmlFor="company-name">Company Name</label>
+                                    <input type="text" name="company-name" placeholder="Company Name" id="company-name" />
+                                </div>
+                                <div className="form-div">
+                                    <label htmlFor="job-title">Job Title</label>
+                                    <input type="text" name="job-title" placeholder="Job Title" id="job-title" />
+                                </div>
+                                <div className="form-div">
+                                    <label htmlFor="job-description">Job Description</label>
+                                    <textarea rows={5} name="job-description" placeholder="Job Description" id="job-description" />
+                                </div>
 
-                            <button className="primary-button" type="submit">
-                                Analyze Resume
-                            </button>
-                        </form>
-                    )}
-                </div>
-            </section>
+                                <div className="form-div">
+                                    <label htmlFor="uploader">Upload Resume</label>
+                                    <FileUploader onFileSelect={handleFileSelect} />
+                                </div>
+
+                                <button className="primary-button" type="submit">
+                                    Analyze Resume
+                                </button>
+                            </form>
+                        )}
+                    </div>
+                </section>
+            </div>
         </main>
     )
 }
