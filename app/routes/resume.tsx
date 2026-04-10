@@ -50,17 +50,22 @@ const Resume = () => {
     }, [id]);
 
     return (
-        <main className="!pt-0">
+        <main className="!pt-0" style={{ background: '#0B0F1A' }}>
             <nav className="resume-nav">
                 <Link to="/" className="back-button">
-                    <img src="/icons/back.svg" alt="logo" className="w-2.5 h-2.5" />
-                    <span className="text-gray-800 text-sm font-semibold">Back to Homepage</span>
+                    <img src="/icons/back.svg" alt="logo" className="w-2.5 h-2.5" style={{ filter: 'invert(1) brightness(0.8)' }} />
+                    <span className="text-sm font-semibold" style={{ color: '#F0F4F8' }}>Back to Homepage</span>
                 </Link>
             </nav>
             <div className="flex flex-row w-full max-lg:flex-col-reverse">
-                <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover h-screen sticky top-0 items-center justify-center">
+                <section
+                    className="feedback-section bg-[url('/images/bg-dark.svg')] bg-cover h-screen sticky top-0 items-center justify-center"
+                    style={{
+                        borderRight: '1px solid rgba(255, 255, 255, 0.06)',
+                    }}
+                >
                     {imageUrl && resumeUrl && (
-                        <div className="animate-in fade-in duration 1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
+                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit" style={{ boxShadow: '0 8px 30px rgba(0, 212, 170, 0.06)' }}>
                             <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                                 <img
                                     src={imageUrl}
@@ -72,7 +77,7 @@ const Resume = () => {
                     )}
                 </section>
                 <section className="feedback-section">
-                    <h2 className="text-4xl text-black! font-bold">Resume Review</h2>
+                    <h2 className="text-4xl font-bold" style={{ color: '#F0F4F8' }}>Resume Review</h2>
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback={feedback}/>
@@ -88,5 +93,3 @@ const Resume = () => {
     )
 }
 export default Resume
-
-
